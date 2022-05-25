@@ -1,11 +1,11 @@
 import React from "react";
-import { CountriesInterface } from "./Countries";
+import { CountriesInterface } from "../../states/store/createCountriesSlice";
 
-interface CountryHomeProps {
+interface CountryInformationProps {
   country: CountriesInterface;
 }
 
-const CountryHome: React.FC<CountryHomeProps> = ({ country }) => {
+const CountryInformation: React.FC<CountryInformationProps> = ({ country }) => {
   return (
     <>
       <img
@@ -37,4 +37,4 @@ const CountryHome: React.FC<CountryHomeProps> = ({ country }) => {
   );
 };
 
-export default CountryHome;
+export default CountryInformation;

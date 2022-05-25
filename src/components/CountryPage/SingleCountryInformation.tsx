@@ -1,49 +1,49 @@
-import axios from "axios";
 import React, { useContext } from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
-import { ThemeContext } from "../Context/ThemeContext";
-import { CountriesInterface } from "../HomePage/Countries";
+import { ThemeContext } from "../../states/context/ThemeContext";
+import { CountriesInterface } from "../../states/store/createCountriesSlice";
+import useStore from "../../states/store/useStore";
 import NotFound from "../UI/404";
+import { ErrorComponent, LoadingComponent } from "../UI/QueryLoadingAndError";
 
 function isError(error: unknown): error is Error {
   return error instanceof Error;
 }
 
-interface SingleCountryDataProps {
+interface SingleCountryInformationProps {
   country: CountriesInterface;
 }
 
-const SingleCountryData: React.FC<SingleCountryDataProps> = ({ country }) => {
+const SingleCountryInformation: React.FC<SingleCountryInformationProps> = ({
+  country,
+}) => {
   const { dark } = useContext(ThemeContext);
-
-  const { data, status, isLoading, error } = useQuery("countrys", () =>
-    axios.get("https://restcountries.com/v2/all").then((res) => res.data)
+  const countries = useStore((state) => state.countries);
+  const getCountries = useStore((state) => state.getCountries);
+  const { isLoading, status, error } = useQuery(`country`, () =>
+    getCountries()
   );
 
-  if (isLoading)
-    return (
-      <div className="pt-16">
-        <div className="flex justify-center items-center">
-          <div
-            className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
-            role="status"
-          ></div>
-        </div>
-      </div>
-    );
-  if (!data) return <NotFound></NotFound>;
-  if (status === "error") if (isError(error)) return <h1>{error.message}</h1>;
+  if (isLoading) return <LoadingComponent></LoadingComponent>;
+  if (!countries) return <NotFound></NotFound>;
+  if (status === "error")
+    if (isError(error)) return <ErrorComponent></ErrorComponent>;
 
   return (
     <>
       <div className="pt-12 grid lg:grid-cols-2 grid-cols-1 sm:gap-24 gap-16 items-center">
-        <img
-          src={country.flags.svg}
-          alt={`Flag of ${country.name}`}
-          className="drop-shadow-md w-full"
-        />
-        <div className="">
+        {
+          // Preventing Layout shift while Image is loading
+        }
+        <div className="relative pt-[50%]">
+          <img
+            src={country.flags.svg}
+            alt={`Flag of ${country.name}`}
+            className="absolute drop-shadow-md w-full top-0 left-0 object-cover"
+          />
+        </div>
+        <div>
           <h2 className="text-3xl pb-12">
             <strong>{country.name}</strong>
           </h2>
@@ -124,10 +124,10 @@ const SingleCountryData: React.FC<SingleCountryDataProps> = ({ country }) => {
                     key={border}
                   >
                     {
-                      data?.find(
+                      countries?.find(
                         (country: CountriesInterface) =>
                           country.alpha3Code === border
-                      ).name
+                      )?.name
                     }
                   </Link>
                 ))}
@@ -140,4 +140,4 @@ const SingleCountryData: React.FC<SingleCountryDataProps> = ({ country }) => {
   );
 };
 
-export default SingleCountryData;
+export default SingleCountryInformation;

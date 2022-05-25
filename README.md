@@ -1,46 +1,29 @@
-# Getting Started with Create React App
+# Discover Countries (REST)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Try it here: [Discover Countries](https://discover-countries-redsync.netlify.app)
 
-## Available Scripts
+This project was created as a challenge from [FrontendMentor](https://www.frontendmentor.io/home) - [REST Countries API with color theme switcher](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca).
 
-In the project directory, you can run:
+## How to use?
 
-### `npm start`
+This app shows data about all countries in the world. Home Page show all the countries fetch from [REST Countries API](https://restcountries.com/) and some basic information about them. There is an option to serach for specific country or filter them by continent. You can click on a specific country or visit [https://discover-countries-redsync.netlify.app/country/{country-alpha3Code}] to get more information about specific country. There is also an option to change a theme color to "Dark" or "Light"
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How it works?
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+I've used [REST Countries API](https://restcountries.com/) to fetch information about countries and then display it on screen. There is also an option to select specific country and see more detailed infomration.
 
-### `npm test`
+## Used technologies:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For this project I used [React](https://reactjs.org/) w/ [TailwindCSS](https://tailwindcss.com/).
 
-### `npm run build`
+### React
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I've created this project using [create-react-app](https://www.npmjs.com/package/create-react-app)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Tailwind
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Setting up Tailwind for React projects can be found at [https://tailwindcss.com/docs/guides/create-react-app](https://tailwindcss.com/docs/guides/create-react-app)
 
-### `npm run eject`
+### TypeScript
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+I use TypeScript for all my React project and you can find more about that in official create-react-app [documentation](https://create-react-app.dev/docs/adding-typescript/)

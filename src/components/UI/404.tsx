@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ThemeContext } from "../Context/ThemeContext";
+import { ThemeContext } from "../../states/context/ThemeContext";
 
 const NotFound = () => {
   const { dark } = useContext(ThemeContext);
