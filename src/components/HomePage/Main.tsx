@@ -16,19 +16,18 @@ const Main = () => {
     setContinent(target.value);
   };
 
-  sessionStorage.setItem("continent", continent);
-
   const handleSearch = (e: React.SyntheticEvent): void => {
     let target = e.target as HTMLInputElement;
     setCountry(target.value);
   };
 
   useEffect(() => {
+    sessionStorage.setItem("continent", continent);
     const currentContinent = filterRef.current;
     if (currentContinent?.value) {
       currentContinent.value = sessionStorage.getItem("continent")!;
     }
-  }, []);
+  }, [continent]);
 
   return (
     <main
