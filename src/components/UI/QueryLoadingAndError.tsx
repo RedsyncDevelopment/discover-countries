@@ -18,5 +18,5 @@ export const LoadingComponent = () => {
 };
 
 export const ErrorComponent = (error: any) => {
-  return <h1>{error.message}</h1>;
+  return <h1 className="font-semibold">{error.message}</h1>;
 };
